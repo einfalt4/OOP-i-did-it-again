@@ -19,7 +19,7 @@ const manQuestions = [
     {
         type: 'input',
         name: 'name',
-        message: 'Name of Manager',
+        message: 'Enter Name of Manager',
         validate: managerName => {
             if (managerName) {
             return true;
@@ -29,5 +29,44 @@ const manQuestions = [
         }
     }
 },
-
+{
+    type: 'number',
+    name: 'id',
+    message: 'Enter the ID of new Manager',
+    validate: idNumber => {
+        if(idNumber) {
+            return true;
+        } else {
+            console.log("Enter the ID of new Manager");
+            return false;
+        }
+    }
+},
+{
+    type: 'input',
+    name: 'email',
+    message: 'Enter the email of new Manager',
+    validate: emailManager => {
+        if(emailManager) {
+            return true;
+        } else {
+            console.log("Enter the email of new Manager");
+            return false;
+        }
+    }
+},
+{
+    type: 'number',
+    name: 'officeNumber',
+    message: 'Enter the office number of new Manager',
+    validate: officeNumber => {
+        if(officeNumber) {
+            return true;
+        } else {
+            console.log("Enter the office number of new Manager");
+            return false;
+        }
+    }
+},
 ]
+
