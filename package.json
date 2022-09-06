@@ -1,0 +1,23 @@
+{
+  "name": "oop-i-did-it-again",
+  "version": "1.0.0",
+  "description": "## Your Task",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/einfalt4/OOP-i-did-it-again.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/einfalt4/OOP-i-did-it-again/issues"
+  },
+  "homepage": "https://github.com/einfalt4/OOP-i-did-it-again#readme"
+}
