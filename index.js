@@ -94,7 +94,7 @@ const managerAdd = async() => {
     employeeCreate.push(managerPost);
     employeeAdd();
 };
-
+// engineer questions
 const engQuestions = [
     {
         type: 'input',
@@ -149,7 +149,7 @@ const engQuestions = [
     }
 },
 ]
-
+// intern questions
 const internQuestions = [
     {
         type: 'input',
@@ -204,3 +204,23 @@ const internQuestions = [
     }
 },
 ]
+
+// employeeAdd creates different kinds of employees
+const employeeAdd = async() => {
+    const result = await inquirer.prompt(empQuestions)
+    .then(function(result) {
+        switch (result.employeeAdd) {
+            case "Yes, add Engineer":
+                engineerAdd();
+                break;
+
+            case "Yes, add Intern":
+                internAdd();
+                break;
+
+            case "No thanks, I'm finished":
+                 writeFile(employeeCreate);
+                break;
+        }
+    })
+}
