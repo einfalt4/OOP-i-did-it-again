@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/einfalt4/OOP-i-did-it-again/issues"
   },
-  "homepage": "https://github.com/einfalt4/OOP-i-did-it-again#readme"
+  "homepage": "https://github.com/einfalt4/OOP-i-did-it-again#readme",
+  "dependencies": {
+    "inquirer": "^9.1.1",
+    "jest": "^29.0.2"
+  }
 }
