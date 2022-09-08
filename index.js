@@ -224,3 +224,33 @@ const employeeAdd = async() => {
         }
     })
 }
+
+// this function provides questions regarding adding the Engineer and adds to employeeCreate
+const engineerAdd = async() => {
+    const result = await inquirer.prompt(engQuestions)
+
+    const engineerPost = new Engineer(
+        result.name,
+        result.id,
+        result.email,
+        result.githubID
+    )
+    employeeCreate.push(engineerPost);
+    employeeAdd();
+}
+
+// same as above function, except for Intern
+const internAdd = async() => {
+    const result = await inquirer.prompt(internQuestions)
+
+    const internPost = new Intern(
+        result.name,
+        result.id,
+        result.email,
+        result.schoolName
+    )
+    employeeCreate.push(internPost);
+    employeeAdd();
+}
+// added to start application
+managerAdd();
