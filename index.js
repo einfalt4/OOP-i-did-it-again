@@ -137,7 +137,7 @@ const engQuestions = [
 },
 {
     type: 'input',
-    name: 'githubID',
+    name: 'github',
     message: 'Enter the Github username of the Engineer',
     validate: githubID => {
         if(githubID) {
@@ -192,7 +192,7 @@ const internQuestions = [
 },
 {
     type: 'input',
-    name: 'schoolName',
+    name: 'school',
     message: 'Enter the name of the school the Intern attends',
     validate: schoolName => {
         if(schoolName) {
@@ -233,7 +233,7 @@ const engineerAdd = async() => {
         result.name,
         result.id,
         result.email,
-        result.githubID
+        result.github
     )
     employeeCreate.push(engineerPost);
     employeeAdd();
@@ -247,7 +247,7 @@ const internAdd = async() => {
         result.name,
         result.id,
         result.email,
-        result.schoolName
+        result.school
     )
     employeeCreate.push(internPost);
     employeeAdd();
