@@ -3,7 +3,7 @@ const Manager = require('../lib/manager')
 const Engineer = require('../lib/engineer')
 
 const originalPage = function(employeeCreate) {
-    const createHTML = [];
+    const getHTML = [];
     const headerHTML = `
     <!DOCTYPE html> 
 <html lang="en"> 
@@ -23,10 +23,10 @@ const originalPage = function(employeeCreate) {
   <div class="row g-2 justify-content-around p-3">
     `;
 
-    createHTML.push(headerHTML)
+    getHTML.push(headerHTML)
 
     for(let i = 0; i < employeeCreate.length; i++) {
-        createHTML.push(employeeCreate[i].createHTML());
+        getHTML.push(employeeCreate[i].getHTML());
     }
   
 }
