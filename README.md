@@ -38,7 +38,7 @@ WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 ```
 
-## Mock-Up
+## Screenshots and other stuff
 
 The following image shows a mock-up of the generated HTML’s appearance and functionality:
 
@@ -50,3 +50,8 @@ The following image shows a mock-up of the generated HTML’s appearance and fun
 [Untitled_ Sep 20, 2022 12_53 PM.webm](https://user-images.githubusercontent.com/107439535/191319595-59179186-2a28-4200-98a6-1880ae5f0051.webm)
 
 
+https://github.com/einfalt4/OOP-i-did-it-again
+
+## Challenges
+
+As you may notice, this project is incomplete, but after 3 weeks of trying to get this to work, I am handing it in as is. Perhaps I'll return to it later, but I keep getting an error trying to generate the HTML and my brain is broken, officially.
