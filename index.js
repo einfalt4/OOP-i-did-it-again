@@ -15,7 +15,9 @@ const originalPage = require('./src/original-page');
 let employeeCreate = [];
 
 // questions for employee additions
-const manQuestions = [
+const manQuestions = () => {
+    return inquirer
+       .prompt([
     {
         type: 'input',
         name: 'name',
@@ -68,35 +70,46 @@ const manQuestions = [
         }
     }
 },
-]
-// employee add question
-const empQuestions = [
     {
-        type: 'list',
+        type: 'confirm',
         name: 'employeeAdd',
         message: 'Do you want to add an Engineer or Intern?',
-        choices: [
-            "Yes, add Engineer",
-            "Yes, add Intern",
-            "No thanks, I'm finished"
-        ]
+        default: false
     }
-]
-// function to initialize application, add manager, and adds to employeeCreate
-const managerAdd = async() => {
-    const result = await inquirer.prompt(manQuestions)
-    const managerPost = new Manager(
-        result.name,
-        result.id,
-        result.email,
-        result.officeNumber
-    );
-    console.log(managerPost)
-    employeeCreate.push(managerPost);
-    employeeAdd();
+])
+.then(employeeData => {
+    employeeCreate.push(employeeData);
+    if(employeeData.employeeAdd) {
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'employeeList',
+                message: 'Do you want to add an Engineer or Intern',
+                choices: ['Engineer', 'Intern']
+            }
+        ])
+        .then(listAnswers => {
+            if(listAnswers.employeeList === 'Engineer') {
+                engQuestions();
+            } else {
+                internQuestions();
+            }
+        })
+    } else {
+        const addHTML = originalPage(employeeCreate)
+        writeFile(addHTML)
+        .then(() => {
+            console.log('Success!')
+        })
+    }
+})
 };
+
+
 // engineer questions
-const engQuestions = [
+const engQuestions = () => {
+    return inquirer
+    .prompt([
     {
         type: 'input',
         name: 'name',
@@ -149,9 +162,45 @@ const engQuestions = [
         }
     }
 },
-]
+{
+    type: 'confirm',
+    name: 'employeeAdd',
+    message: 'Do you want to add an Engineer or Intern?',
+    default: false
+}
+
+])
+.then(employeeData => {
+    employeeCreate.push(employeeData);
+    if(employeeData.employeeAdd) {
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'employeeList',
+                message: 'Do you want to add an Engineer or Intern',
+                choices: ['Engineer', 'Intern']
+            }
+        ])
+        .then(listAnswers => {
+            if(listAnswers.employeeList === 'Engineer') {
+                engQuestions();
+            } else {
+                internQuestions();
+            }
+        })
+    } else {
+        const addHTML = originalPage(employeeCreate)
+        writeFile(addHTML)
+        .then(() => {
+            console.log('Success!')
+        })
+    }
+})
+};
 // intern questions
-const internQuestions = [
+const internQuestions = () => {
+    return inquirer
+     .prompt([
     {
         type: 'input',
         name: 'name',
@@ -204,54 +253,41 @@ const internQuestions = [
         }
     }
 },
-]
-
-// employeeAdd creates different kinds of employees
-const employeeAdd = async() => {
-    const result = await inquirer.prompt(empQuestions)
-    .then(function(result) {
-        switch (result.employeeAdd) {
-            case "Yes, add Engineer":
-                engineerAdd();
-                break;
-
-            case "Yes, add Intern":
-                internAdd();
-                break;
-
-            case "No thanks, I'm finished":
-                 writeFile(employeeCreate);
-                break;
-        }
-    })
+{
+    type: 'confirm',
+    name: 'employeeAdd',
+    message: 'Do you want to add an Engineer or Intern?',
+    default: false
 }
 
-// this function provides questions regarding adding the Engineer and adds to employeeCreate
-const engineerAdd = async() => {
-    const result = await inquirer.prompt(engQuestions)
+])
+.then(employeeData => {
+    employeeCreate.push(employeeData);
+    if(employeeData.employeeAdd) {
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'employeeList',
+                message: 'Do you want to add an Engineer or Intern',
+                choices: ['Engineer', 'Intern']
+            }
+        ])
+        .then(listAnswers => {
+            if(listAnswers.employeeList === 'Engineer') {
+                engQuestions();
+            } else {
+                internQuestions();
+            }
+        })
+    } else {
+        const addHTML = originalPage(employeeCreate)
+        writeFile(addHTML)
+        .then(() => {
+            console.log('Success!')
+        })
+    }
+})
+};
 
-    const engineerPost = new Engineer(
-        result.name,
-        result.id,
-        result.email,
-        result.github
-    )
-    employeeCreate.push(engineerPost);
-    employeeAdd();
-}
-
-// same as above function, except for Intern
-const internAdd = async() => {
-    const result = await inquirer.prompt(internQuestions)
-
-    const internPost = new Intern(
-        result.name,
-        result.id,
-        result.email,
-        result.school
-    )
-    employeeCreate.push(internPost);
-    employeeAdd();
-}
 // added to start application
-managerAdd();
+manQuestions();

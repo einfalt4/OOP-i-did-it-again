@@ -18,9 +18,9 @@ const writeFile = (data) => {
             resolve({
                 ok: true,
                 message: "file created"
-            })
-        }
-    })
-})
+            });
+        };
+    });
+});
 }
 module.exports = { writeFile };
