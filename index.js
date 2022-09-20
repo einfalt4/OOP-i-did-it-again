@@ -8,11 +8,11 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 
 // page generation
-const {writeFile} = require('./src/generate-page');
+const { writeFile } = require('./src/generate-page');
 const originalPage = require('./src/original-page');
 
 // employee creation
-employeeCreate = [];
+let employeeCreate = [];
 
 // questions for employee additions
 const manQuestions = [
@@ -91,6 +91,7 @@ const managerAdd = async() => {
         result.email,
         result.officeNumber
     );
+    console.log(managerPost)
     employeeCreate.push(managerPost);
     employeeAdd();
 };
